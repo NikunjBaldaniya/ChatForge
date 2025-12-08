@@ -96,7 +96,7 @@ A powerful Flask-based AI chat platform with access to 100+ AI models from leadi
 
 1. **Clone the Repository**
 ```bash
-git clone <repository-url>
+git clone https://github.com/NikunjBaldaniya/ChatForge.git
 cd "ChatForge"
 ```
 
