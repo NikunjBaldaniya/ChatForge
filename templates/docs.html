@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - ChatForge</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body style="overflow-y: auto;">
+<script>
+    const theme = localStorage.getItem('theme') || 'light';
+    document.body.className = theme === 'dark' ? 'dark-theme' : '';
+</script>
+<div class="docs-page" style="background: var(--bg); color: var(--text); min-height: 100vh; padding: 40px 20px;">
+    <div class="docs-container" style="max-width: 900px; margin: 0 auto;">
+        <button onclick="window.location.href='/'" style="position: fixed; top: 20px; right: 20px; width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--border); background: var(--bg); color: var(--text); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; z-index: 1000; transition: all 0.2s;" onmouseover="this.style.background='var(--bg-2)'" onmouseout="this.style.background='var(--bg)'">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="docs-header" style="text-align: center; margin-bottom: 60px;">
+            <div style="display: inline-flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="ChatForge" style="width: 80px; height: 80px; border-radius: 16px;">
+                <h1 style="font-size: 3rem; font-weight: 700; margin: 0;">ChatForge</h1>
+            </div>
+            <p style="font-size: 1.2rem; color: var(--text-2);">Complete Documentation & User Guide</p>
+        </div>
+
+        <div class="docs-content">
+            <!-- Overview -->
+            <section style="margin-bottom: 50px;">
+                <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px; color: var(--text);">
+                    <i class="fas fa-info-circle" style="color: var(--accent);"></i> Overview
+                </h2>
+                <p style="line-height: 1.8; color: var(--text-2);">
+                    ChatForge is a comprehensive AI-powered chat platform that provides access to 100+ AI models from leading providers. 
+                    Whether you're coding, writing, analyzing data, or just having a conversation, ChatForge brings the power of multiple AI models to your fingertips.
+                </p>
+            </section>
+
+            <!-- Features -->
+            <section style="margin-bottom: 50px;">
+                <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px; color: var(--text);">
+                    <i class="fas fa-star" style="color: var(--accent);"></i> Key Features
+                </h2>
+                <div style="display: grid; gap: 20px;">
+                    <div style="padding: 20px; background: var(--bg-2); border-radius: 12px; border: 1px solid var(--border);">
+                        <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 10px;">
+                            <i class="fas fa-robot" style="color: var(--accent);"></i> Multi-Model Support
+                        </h3>
+                        <p style="color: var(--text-2); line-height: 1.6;">Access 100+ AI models including OpenAI GPT-5.1, Claude Opus 4, DeepSeek R1, Google Gemini 3, and Grok 4.</p>
+                    </div>
+                    <div style="padding: 20px; background: var(--bg-2); border-radius: 12px; border: 1px solid var(--border);">
+                        <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 10px;">
+                            <i class="fas fa-history" style="color: var(--accent);"></i> Chat History
+                        </h3>
+                        <p style="color: var(--text-2); line-height: 1.6;">All your conversations are automatically saved and organized. Access your chat history anytime from the sidebar.</p>
+                    </div>
+                    <div style="padding: 20px; background: var(--bg-2); border-radius: 12px; border: 1px solid var(--border);">
+                        <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 10px;">
+                            <i class="fas fa-coins" style="color: var(--accent);"></i> Credit System
+                        </h3>
+                        <p style="color: var(--text-2); line-height: 1.6;">Free users get 100 credits daily. Each message costs 1 credit. Credits reset every 24 hours.</p>
+                    </div>
+                    <div style="padding: 20px; background: var(--bg-2); border-radius: 12px; border: 1px solid var(--border);">
+                        <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 10px;">
+                            <i class="fas fa-moon" style="color: var(--accent);"></i> Dark/Light Theme
+                        </h3>
+                        <p style="color: var(--text-2); line-height: 1.6;">Switch between dark and light themes for comfortable viewing in any environment.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Getting Started -->
+            <section style="margin-bottom: 50px;">
+                <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px; color: var(--text);">
+                    <i class="fas fa-rocket" style="color: var(--accent);"></i> Getting Started
+                </h2>
+                <div style="padding: 20px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 8px; margin-bottom: 20px;">
+                    <h4 style="font-weight: 600; margin-bottom: 10px; color: #856404;">
+                        <i class="fas fa-exclamation-triangle"></i> Important Requirement
+                    </h4>
+                    <p style="color: #856404; line-height: 1.6; margin: 0;">
+                        <strong>You must have a Puter.com account to use ChatForge.</strong> The AI models are powered by Puter.com's API.
+                    </p>
+                </div>
+                <ol style="line-height: 2; color: var(--text-2); padding-left: 20px;">
+                    <li><strong>Create Puter Account:</strong> Visit <a href="https://puter.com" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 600;">puter.com</a> and sign up for a free account.</li>
+                    <li><strong>Sign Up on ChatForge:</strong> Create your ChatForge account to get 100 daily credits and save your chat history.</li>
+                    <li><strong>Choose a Model:</strong> Click the provider button to select from OpenAI, Claude, DeepSeek, Google, or Grok.</li>
+                    <li><strong>Start Chatting:</strong> Type your message and press Enter or click the send button.</li>
+                    <li><strong>Manage Chats:</strong> Access your chat history from the sidebar. Edit titles or delete old conversations.</li>
+                </ol>
+            </section>
+
+            <!-- Puter Setup -->
+            <section style="margin-bottom: 50px;">
+                <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px; color: var(--text);">
+                    <i class="fas fa-cog" style="color: var(--accent);"></i> Puter.com Setup Guide
+                </h2>
+                <div style="display: grid; gap: 20px;">
+                    <div style="padding: 20px; background: var(--bg-2); border-radius: 12px; border: 1px solid var(--border);">
+                        <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 15px;">
+                            <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--accent); color: #fff; border-radius: 50%; margin-right: 10px;">1</span>
+                            Visit Puter.com
+                        </h3>
+                        <p style="color: var(--text-2); line-height: 1.6;">Go to <a href="https://puter.com" target="_blank" style="color: var(--accent);">https://puter.com</a> in your web browser.</p>
+                    </div>
+                    <div style="padding: 20px; background: var(--bg-2); border-radius: 12px; border: 1px solid var(--border);">
+                        <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 15px;">
+                            <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--accent); color: #fff; border-radius: 50%; margin-right: 10px;">2</span>
+                            Create Account
+                        </h3>
+                        <p style="color: var(--text-2); line-height: 1.6;">Click "Sign Up" and create your free Puter account with your email address.</p>
+                    </div>
+                    <div style="padding: 20px; background: var(--bg-2); border-radius: 12px; border: 1px solid var(--border);">
+                        <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 15px;">
+                            <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--accent); color: #fff; border-radius: 50%; margin-right: 10px;">3</span>
+                            Verify Email
+                        </h3>
+                        <p style="color: var(--text-2); line-height: 1.6;">Check your email and verify your Puter account by clicking the verification link.</p>
+                    </div>
+                    <div style="padding: 20px; background: var(--bg-2); border-radius: 12px; border: 1px solid var(--border);">
+                        <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 15px;">
+                            <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--accent); color: #fff; border-radius: 50%; margin-right: 10px;">4</span>
+                            Login to Puter
+                        </h3>
+                        <p style="color: var(--text-2); line-height: 1.6;">Sign in to your Puter account. Keep this session active while using ChatForge.</p>
+                    </div>
+                    <div style="padding: 20px; background: var(--bg-2); border-radius: 12px; border: 1px solid var(--border);">
+                        <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 15px;">
+                            <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--accent); color: #fff; border-radius: 50%; margin-right: 10px;">5</span>
+                            Use ChatForge
+                        </h3>
+                        <p style="color: var(--text-2); line-height: 1.6;">Now you can use ChatForge! The app will automatically connect to Puter's AI services.</p>
+                    </div>
+                </div>
+                <div style="margin-top: 20px; padding: 15px; background: var(--bg-2); border-radius: 8px; border-left: 4px solid var(--accent);">
+                    <p style="color: var(--text-2); margin: 0; line-height: 1.6;">
+                        <i class="fas fa-info-circle" style="color: var(--accent);"></i> <strong>Note:</strong> You need to be logged into Puter.com in the same browser to use ChatForge's AI features.
+                    </p>
+                </div>
+            </section>
+
+            <!-- AI Models -->
+            <section style="margin-bottom: 50px;">
+                <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px; color: var(--text);">
+                    <i class="fas fa-microchip" style="color: var(--accent);"></i> Available AI Models
+                </h2>
+                <div style="display: grid; gap: 15px;">
+                    <div style="padding: 15px; background: var(--bg-2); border-radius: 8px;">
+                        <h4 style="font-weight: 600; margin-bottom: 8px;"><i class="fas fa-brain"></i> OpenAI (25 models)</h4>
+                        <p style="color: var(--text-2); font-size: 0.9rem;">GPT-5.1, GPT-5, GPT-4o, O1, O3, O4-mini and more</p>
+                    </div>
+                    <div style="padding: 15px; background: var(--bg-2); border-radius: 8px;">
+                        <h4 style="font-weight: 600; margin-bottom: 8px;"><i class="fas fa-brain"></i> Claude (6 models)</h4>
+                        <p style="color: var(--text-2); font-size: 0.9rem;">Sonnet 4, Opus 4, Haiku 4.5</p>
+                    </div>
+                    <div style="padding: 15px; background: var(--bg-2); border-radius: 8px;">
+                        <h4 style="font-weight: 600; margin-bottom: 8px;"><i class="fas fa-brain"></i> DeepSeek (23 models)</h4>
+                        <p style="color: var(--text-2); font-size: 0.9rem;">DeepSeek R1, V3.2, Chat, Prover V2</p>
+                    </div>
+                    <div style="padding: 15px; background: var(--bg-2); border-radius: 8px;">
+                        <h4 style="font-weight: 600; margin-bottom: 8px;"><i class="fas fa-brain"></i> Google Gemini (7 models)</h4>
+                        <p style="color: var(--text-2); font-size: 0.9rem;">Gemini 3 Pro, 2.5 Pro, 2.5 Flash</p>
+                    </div>
+                    <div style="padding: 15px; background: var(--bg-2); border-radius: 8px;">
+                        <h4 style="font-weight: 600; margin-bottom: 8px;"><i class="fas fa-brain"></i> Google Gemma (12 models)</h4>
+                        <p style="color: var(--text-2); font-size: 0.9rem;">Gemma 3 (27B, 12B, 4B), Gemma 2</p>
+                    </div>
+                    <div style="padding: 15px; background: var(--bg-2); border-radius: 8px;">
+                        <h4 style="font-weight: 600; margin-bottom: 8px;"><i class="fas fa-brain"></i> Grok (11 models)</h4>
+                        <p style="color: var(--text-2); font-size: 0.9rem;">Grok 4, Grok 3, Grok Vision, Grok Code</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Usage Limits -->
+            <section style="margin-bottom: 50px;">
+                <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px; color: var(--text);">
+                    <i class="fas fa-chart-line" style="color: var(--accent);"></i> Usage Limits
+                </h2>
+                <div style="padding: 20px; background: var(--bg-2); border-radius: 12px; border: 1px solid var(--border);">
+                    <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 15px;">Free Tier</h3>
+                    <ul style="line-height: 2; color: var(--text-2);">
+                        <li>100 credits per day (resets every 24 hours)</li>
+                        <li>1 credit per message</li>
+                        <li>20 messages per chat session</li>
+                        <li>Warning at 15 messages</li>
+                        <li>Full chat history access</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Tips & Tricks -->
+            <section style="margin-bottom: 50px;">
+                <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px; color: var(--text);">
+                    <i class="fas fa-lightbulb" style="color: var(--accent);"></i> Tips & Tricks
+                </h2>
+                <div style="display: grid; gap: 15px;">
+                    <div style="padding: 15px; background: var(--bg-2); border-radius: 8px; border-left: 4px solid var(--accent);">
+                        <strong>Quick Send:</strong> Press Enter to send messages. Use Shift+Enter for new lines.
+                    </div>
+                    <div style="padding: 15px; background: var(--bg-2); border-radius: 8px; border-left: 4px solid var(--accent);">
+                        <strong>Switch Models:</strong> Try different models for different tasks. GPT for general chat, Claude for analysis, DeepSeek for reasoning.
+                    </div>
+                    <div style="padding: 15px; background: var(--bg-2); border-radius: 8px; border-left: 4px solid var(--accent);">
+                        <strong>Organize Chats:</strong> Edit chat titles to keep your conversations organized and easy to find.
+                    </div>
+                    <div style="padding: 15px; background: var(--bg-2); border-radius: 8px; border-left: 4px solid var(--accent);">
+                        <strong>Copy Responses:</strong> Hover over bot messages to reveal the copy button for easy sharing.
+                    </div>
+                    <div style="padding: 15px; background: var(--bg-2); border-radius: 8px; border-left: 4px solid var(--accent);">
+                        <strong>Sidebar Toggle:</strong> Click the ChatForge logo or use the toggle button to collapse/expand the sidebar.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Keyboard Shortcuts -->
+            <section style="margin-bottom: 50px;">
+                <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px; color: var(--text);">
+                    <i class="fas fa-keyboard" style="color: var(--accent);"></i> Keyboard Shortcuts
+                </h2>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr style="background: var(--bg-2);">
+                        <th style="padding: 12px; text-align: left; border: 1px solid var(--border);">Action</th>
+                        <th style="padding: 12px; text-align: left; border: 1px solid var(--border);">Shortcut</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid var(--border);">Send Message</td>
+                        <td style="padding: 12px; border: 1px solid var(--border);"><code style="background: var(--bg-2); padding: 4px 8px; border-radius: 4px;">Enter</code></td>
+                    </tr>
+                    <tr style="background: var(--bg-2);">
+                        <td style="padding: 12px; border: 1px solid var(--border);">New Line</td>
+                        <td style="padding: 12px; border: 1px solid var(--border);"><code style="background: var(--bg); padding: 4px 8px; border-radius: 4px;">Shift + Enter</code></td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- FAQ -->
+            <section style="margin-bottom: 50px;">
+                <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px; color: var(--text);">
+                    <i class="fas fa-question-circle" style="color: var(--accent);"></i> FAQ
+                </h2>
+                <div style="display: grid; gap: 20px;">
+                    <div style="padding: 20px; background: var(--bg-2); border-radius: 12px;">
+                        <h4 style="font-weight: 600; margin-bottom: 10px;">How do credits work?</h4>
+                        <p style="color: var(--text-2); line-height: 1.6;">Free users receive 100 credits daily. Each message costs 1 credit. Credits automatically reset every 24 hours.</p>
+                    </div>
+                    <div style="padding: 20px; background: var(--bg-2); border-radius: 12px;">
+                        <h4 style="font-weight: 600; margin-bottom: 10px;">Do I need a Puter.com account?</h4>
+                        <p style="color: var(--text-2); line-height: 1.6;">Yes, Puter.com account is required as ChatForge uses Puter's AI API. Create a free account at <a href="https://puter.com" target="_blank" style="color: var(--accent);">puter.com</a>.</p>
+                    </div>
+                    <div style="padding: 20px; background: var(--bg-2); border-radius: 12px;">
+                        <h4 style="font-weight: 600; margin-bottom: 10px;">Can I use ChatForge without signing up?</h4>
+                        <p style="color: var(--text-2); line-height: 1.6;">You can use guest mode with limited credits, but you need a Puter.com account for AI features. Sign up on ChatForge for 100 daily credits and chat history.</p>
+                    </div>
+                    <div style="padding: 20px; background: var(--bg-2); border-radius: 12px;">
+                        <h4 style="font-weight: 600; margin-bottom: 10px;">Which AI model should I use?</h4>
+                        <p style="color: var(--text-2); line-height: 1.6;">It depends on your task. GPT models are great for general conversation, Claude excels at analysis, DeepSeek is powerful for reasoning, and Gemini is fast for quick responses.</p>
+                    </div>
+                    <div style="padding: 20px; background: var(--bg-2); border-radius: 12px;">
+                        <h4 style="font-weight: 600; margin-bottom: 10px;">Is my data secure?</h4>
+                        <p style="color: var(--text-2); line-height: 1.6;">Yes. Your conversations are stored securely and are only accessible to you. We never share your data with third parties.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Support -->
+            <section style="margin-bottom: 50px;">
+                <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 20px; color: var(--text);">
+                    <i class="fas fa-life-ring" style="color: var(--accent);"></i> Support
+                </h2>
+                <p style="line-height: 1.8; color: var(--text-2); margin-bottom: 20px;">
+                    Need help? Have questions? We're here to assist you!
+                </p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <button onclick="window.location.href='/privacy'" style="padding: 12px 24px; background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; color: var(--text);">
+                        <i class="fas fa-shield-alt"></i> Privacy Policy
+                    </button>
+                    <button onclick="window.location.href='/upgrade'" style="padding: 12px 24px; background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; color: var(--text);">
+                        <i class="fas fa-crown"></i> Upgrade Plans
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <div style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border); margin-top: 60px;">
+            <p style="color: var(--text-2);">© 2025 ChatForge. Built with ❤️ for AI enthusiasts.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

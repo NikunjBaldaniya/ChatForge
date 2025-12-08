@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Checkout - ChatForge</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body class="payment-page-root payment-page-body">
+
+    <div class="payment-container">
+        <div class="payment-header">
+            <p style="margin:0; opacity: 0.9; font-size: 0.9rem;">Total Payable Amount</p>
+            <div class="amount-display">$<span id="headerPrice">9.99</span></div>
+            <div style="font-size: 0.9rem; opacity: 0.8;">
+                <i class="fas fa-gem"></i> ChatForge Pro (<span id="planName">Monthly</span>)
+            </div>
+            
+            <div style="position: absolute; bottom: -1px; left: 0; width: 100%; overflow: hidden; line-height: 0;">
+                <svg viewBox="0 0 500 40" preserveAspectRatio="none" style="width: 100%; height: 30px; fill: #ffffff;">
+                    <path d="M0,0 C150,40 350,0 500,40 L500,40 L0,40 Z"></path>
+                </svg>
+            </div>
+        </div>
+
+        <div class="payment-body">
+            <label class="section-title">Select Payment Method</label>
+            <div class="methods-grid">
+                <div class="method-option active" onclick="setMethod('card')">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Card</span>
+                </div>
+                <div class="method-option" onclick="setMethod('upi')">
+                    <i class="fas fa-qrcode"></i>
+                    <span>UPI</span>
+                </div>
+                <div class="method-option" onclick="setMethod('netbanking')">
+                    <i class="fas fa-university"></i>
+                    <span>Net Bank</span>
+                </div>
+                <div class="method-option" onclick="setMethod('wallet')">
+                    <i class="fas fa-wallet"></i>
+                    <span>Wallet</span>
+                </div>
+            </div>
+
+            <div id="cardDetails" class="details-section active">
+                <div class="mb-3">
+                    <label class="form-label">Card Number</label>
+                    <div class="input-icon-wrap">
+                        <input type="text" class="form-control" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19">
+                        <i class="fab fa-cc-visa"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <label class="form-label">Expiry</label>
+                        <input type="text" class="form-control" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label class="form-label">CVV</label>
+                        <div class="input-icon-wrap">
+                            <input type="password" class="form-control" id="cardCvv" placeholder="123" maxlength="3">
+                            <i class="fas fa-lock" style="font-size: 0.8rem;"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Cardholder Name</label>
+                    <input type="text" class="form-control" id="cardName" placeholder="Name on card">
+                </div>
+            </div>
+
+            <div id="upiDetails" class="details-section">
+                <div class="mb-3">
+                    <label class="form-label">Enter UPI ID</label>
+                    <input type="text" class="form-control" id="upiId" placeholder="username@oksbi">
+                </div>
+                <label class="section-title" style="margin-top: 15px;">Or Pay via App</label>
+                <div class="upi-grid">
+                    <div class="upi-item" onclick="selectUpiApp(this, 'gpay')">
+                        <i class="fab fa-google" style="color: #4285f4;"></i>
+                        <p>GPay</p>
+                    </div>
+                    <div class="upi-item" onclick="selectUpiApp(this, 'phonepe')">
+                        <i class="fas fa-mobile-alt" style="color: #5f259f;"></i>
+                        <p>PhonePe</p>
+                    </div>
+                    <div class="upi-item" onclick="selectUpiApp(this, 'paytm')">
+                        <i class="fas fa-wallet" style="color: #00baf2;"></i>
+                        <p>Paytm</p>
+                    </div>
+                    <div class="upi-item" onclick="selectUpiApp(this, 'whatsapp')">
+                        <i class="fab fa-whatsapp" style="color: #25D366;"></i>
+                        <p>WA Pay</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="netbankingDetails" class="details-section">
+                <div class="mb-3">
+                    <label class="form-label">Choose Bank</label>
+                    <select class="form-select" id="bankSelect">
+                        <option selected disabled>Select your bank</option>
+                        <option>State Bank of India</option>
+                        <option>HDFC Bank</option>
+                        <option>ICICI Bank</option>
+                        <option>Axis Bank</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="walletDetails" class="details-section">
+                <div class="mb-3">
+                    <label class="form-label">Select Wallet</label>
+                    <select class="form-select" id="walletSelect">
+                        <option selected>Paytm Wallet</option>
+                        <option>Amazon Pay</option>
+                        <option>PhonePe Wallet</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Linked Mobile Number</label>
+                    <input type="text" class="form-control" id="walletMobile" placeholder="98765 43210" maxlength="10">
+                </div>
+            </div>
+
+            <button class="btn-pay" onclick="processPayment()">
+                Pay Now <i class="fas fa-arrow-right ms-2"></i>
+            </button>
+
+            <div class="secure-badge">
+                <i class="fas fa-lock"></i>
+                <span>SSL Secured & 256-bit Encrypted</span>
+            </div>
+            
+            <div style="text-align: center; margin-top: 15px;">
+                 <a href="/" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Cancel Transaction</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="processingOverlay" class="overlay-screen">
+        <div class="spinner"></div>
+        <h4 style="font-weight: 600;">Processing Payment</h4>
+        <p style="color: var(--text-muted);">Please do not close this window...</p>
+    </div>
+
+    <div id="successOverlay" class="overlay-screen">
+        <div class="result-card">
+            <div class="icon-circle success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3>Payment Successful!</h3>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Your subscription has been activated.</p>
+            <p style="font-size: 0.9rem; background: #f3f4f6; padding: 10px; border-radius: 8px;">
+                Transaction ID: <span style="font-family: monospace;">TXN_8839201</span>
+            </p>
+        </div>
+    </div>
+
+    <div id="failedOverlay" class="overlay-screen">
+        <div class="result-card">
+            <div class="icon-circle error-icon">
+                <i class="fas fa-times"></i>
+            </div>
+            <h3>Payment Failed</h3>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Something went wrong with the transaction.</p>
+            <button class="btn btn-outline-danger w-100" onclick="closeOverlay('failedOverlay')">Try Again</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="{{ url_for('static', filename='js/payment.js') }}"></script>
+</body>
+</html>
