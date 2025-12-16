@@ -1,22 +1,41 @@
 const MODELS = {
-    'OpenAI': ['gpt-5.1', 'gpt-5.1-codex', 'gpt-5.1-codex-mini', 'gpt-5.1-chat-latest', 'gpt-5', 'gpt-5-mini', 'gpt-5-nano', 'gpt-5-chat-latest', 'gpt-4.1', 'gpt-4.1-mini', 'gpt-4.1-nano', 'gpt-4.5-preview', 'gpt-4o', 'gpt-4o-mini', 'o1', 'o1-mini', 'o1-pro', 'o3', 'o3-mini', 'o4-mini', 'openrouter:openai/gpt-oss-120b', 'openrouter:openai/gpt-oss-120b:exacto', 'openrouter:openai/gpt-oss-20b', 'openrouter:openai/gpt-oss-20b:free', 'openrouter:openai/gpt-oss-safeguard-20b'],
-    'Claude': ['claude-sonnet-4', 'claude-sonnet-4-5', 'claude-opus-4', 'claude-opus-4-1', 'claude-opus-4-5', 'claude-haiku-4-5'],
-    'DeepSeek': ['deepseek/deepseek-chat', 'deepseek/deepseek-chat-v3-0324', 'deepseek/deepseek-chat-v3-0324:free', 'deepseek/deepseek-chat-v3.1', 'deepseek/deepseek-chat-v3.1:free', 'deepseek/deepseek-prover-v2', 'deepseek/deepseek-r1', 'deepseek/deepseek-r1-0528', 'deepseek/deepseek-r1-0528-qwen3-8b', 'deepseek/deepseek-r1-0528-qwen3-8b:free', 'deepseek/deepseek-r1-0528:free', 'deepseek/deepseek-r1-distill-llama-70b', 'deepseek/deepseek-r1-distill-llama-70b:free', 'deepseek/deepseek-r1-distill-llama-8b', 'deepseek/deepseek-r1-distill-qwen-14b', 'deepseek/deepseek-r1-distill-qwen-14b:free', 'deepseek/deepseek-r1-distill-qwen-32b', 'deepseek/deepseek-r1:free', 'deepseek/deepseek-v3.1-base', 'deepseek/deepseek-v3.1-terminus', 'deepseek/deepseek-v3.2-exp', 'deepseek/deepseek-v3.2', 'deepseek/deepseek-v3.2-speciale'],
-    'Google Gemini': ['gemini-3-pro-preview', 'gemini-2.5-pro', 'gemini-2.5-flash-lite', 'gemini-2.5-flash', 'gemini-2.0-flash-lite', 'gemini-2.0-flash', 'gemini-1.5-flash'],
-    'Google Gemma': ['google/gemma-2-27b-it', 'google/gemma-2-9b-it', 'google/gemma-2-9b-it:free', 'google/gemma-3-12b-it', 'google/gemma-3-12b-it:free', 'google/gemma-3-27b-it', 'google/gemma-3-27b-it:free', 'google/gemma-3-4b-it', 'google/gemma-3-4b-it:free', 'google/gemma-3n-e2b-it:free', 'google/gemma-3n-e4b-it', 'google/gemma-3n-e4b-it:free'],
-    'Grok': ['x-ai/grok-2-1212', 'x-ai/grok-2-vision-1212', 'x-ai/grok-3', 'x-ai/grok-3-beta', 'x-ai/grok-3-mini', 'x-ai/grok-3-mini-beta', 'x-ai/grok-4', 'x-ai/grok-4-fast:free', 'x-ai/grok-4.1-fast', 'x-ai/grok-code-fast-1', 'x-ai/grok-vision-beta']
+    'OpenAI': ['gpt-5.1', 'gpt-5.1-chat-latest', 'gpt-5', 'gpt-5-mini', 'gpt-5-nano', 'gpt-5-chat-latest', 'gpt-4.1', 'gpt-4.1-mini', 'gpt-4.1-nano', 'gpt-4o', 'gpt-4o-mini', 'o1', 'o3', 'o3-mini', 'o4-mini', 'openrouter:openai/gpt-oss-120b:exacto', 'openrouter:openai/gpt-oss-safeguard-20b'],
+
+    'OpenAI Codex': [
+        "openrouter:openai/codex-mini",
+        "openrouter:openai/gpt-5-codex",
+        "openrouter:openai/gpt-5.1-codex-max",
+    ],
+
+    'Claude': ['claude-sonnet-4-5', 'claude-opus-4', 'claude-opus-4-5', 'claude-haiku-4-5'],
+
+    'DeepSeek': ['deepseek/deepseek-chat-v3-0324', 'deepseek/deepseek-chat-v3.1', 'deepseek/deepseek-prover-v2', 'deepseek/deepseek-r1', 'deepseek/deepseek-r1-0528', 'deepseek/deepseek-r1-0528-qwen3-8b', 'deepseek/deepseek-r1-distill-qwen-14b', 'deepseek/deepseek-r1-distill-qwen-32b', 'deepseek/deepseek-v3.1-terminus', 'deepseek/deepseek-v3.2-exp'],
+
+    'Google Gemini': ['gemini-3-pro-preview', 'gemini-2.5-pro', 'gemini-2.5-flash-lite', 'gemini-2.5-flash', 'gemini-2.0-flash-lite', 'gemini-2.0-flash'],
+
+    'Google Gemma': ['google/gemma-2-27b-it', 'google/gemma-2-9b-it', 'google/gemma-3-27b-it', 'google/gemma-3-4b-it',],
+
+    'Grok': ['x-ai/grok-2-1212', 'x-ai/grok-2-vision-1212', 'x-ai/grok-3', 'x-ai/grok-3-beta', 'x-ai/grok-3-mini', 'x-ai/grok-3-mini-beta', 'x-ai/grok-4', 'x-ai/grok-4.1-fast', 'x-ai/grok-code-fast-1'],
+
+    'Amazon Nova': [
+        "amazon/nova-2-lite-v1",
+        "amazon/nova-lite-v1",
+        "amazon/nova-micro-v1",
+        "amazon/nova-premier-v1",
+        "amazon/nova-pro-v1"
+    ]
 };
 
 const GUEST_MODELS = {
-    'OpenAI': ['gpt-4o-mini', 'gpt-4o'],
+    'OpenAI': ['gpt-4o'],
     'Claude': ['claude-haiku-4-5'],
-    'DeepSeek': ['deepseek/deepseek-chat', 'deepseek/deepseek-r1'],
+    'DeepSeek': ['deepseek/deepseek-r1'],
     'Google Gemini': ['gemini-2.0-flash', 'gemini-2.5-flash'],
-    'Google Gemma': ['google/gemma-3-12b-it', 'google/gemma-3-4b-it'],
+    'Google Gemma': ['google/gemma-3-4b-it'],
     'Grok': ['x-ai/grok-3-mini']
 };
 
-const FREE_MODELS = ['gpt-5', 'gpt-4o', 'gpt-4o-mini', 'claude-sonnet-4', 'claude-haiku-4-5', 'deepseek/deepseek-chat', 'deepseek/deepseek-r1', 'gemini-2.5-flash', 'gemini-2.0-flash', 'google/gemma-3-12b-it', 'google/gemma-3-4b-it', 'x-ai/grok-3', 'x-ai/grok-3-mini'];
+const FREE_MODELS = ['gpt-5', 'gpt-4o', 'claude-haiku-4-5', 'deepseek/deepseek-r1', 'gemini-2.5-flash', 'gemini-2.0-flash', 'google/gemma-3-4b-it', 'x-ai/grok-3', 'x-ai/grok-3-mini'];
 const PRO_MODELS = Object.values(MODELS).flat();
 
 let messages = [];
@@ -55,8 +74,6 @@ function copyCode(btn) {
     });
 }
 
-
-
 let currentMode = 'search';
 let currentProvider = 'OpenAI';
 let currentModel = 'gpt-5.1';
@@ -79,7 +96,7 @@ function toggleProviderSelector() {
     const modelSelector = document.getElementById('modelSelector');
     modelSelector.style.display = 'none';
     selector.style.display = selector.style.display === 'none' ? 'block' : 'none';
-    
+
     if (selector.style.display === 'block') {
         populateProviderList();
     }
@@ -90,7 +107,7 @@ function toggleModelSelector() {
     const providerSelector = document.getElementById('providerSelector');
     providerSelector.style.display = 'none';
     selector.style.display = selector.style.display === 'none' ? 'block' : 'none';
-    
+
     if (selector.style.display === 'block') {
         populateModelList();
     }
@@ -99,7 +116,7 @@ function toggleModelSelector() {
 function populateProviderList() {
     const list = document.getElementById('providerList');
     list.innerHTML = '';
-    
+
     Object.keys(MODELS).forEach(provider => {
         const item = document.createElement('div');
         item.className = 'selector-item' + (provider === currentProvider ? ' active' : '');
@@ -112,13 +129,13 @@ function populateProviderList() {
 function populateModelList() {
     const list = document.getElementById('modelList');
     list.innerHTML = '';
-    
+
     const models = MODELS[currentProvider] || [];
-    
+
     // Separate free and pro models
     const freeModels = [];
     const proModels = [];
-    
+
     models.forEach(model => {
         if (!isLoggedIn) {
             if (isGuestModel(model)) {
@@ -136,7 +153,7 @@ function populateModelList() {
             freeModels.push(model);
         }
     });
-    
+
     // Render free models first
     freeModels.forEach(model => {
         const item = document.createElement('div');
@@ -145,7 +162,7 @@ function populateModelList() {
         item.onclick = () => selectModel(model);
         list.appendChild(item);
     });
-    
+
     // Add divider if there are pro models
     if (proModels.length > 0) {
         const divider = document.createElement('div');
@@ -153,19 +170,19 @@ function populateModelList() {
         divider.textContent = 'Pro Models';
         list.appendChild(divider);
     }
-    
+
     // Render pro models
     proModels.forEach(model => {
         const item = document.createElement('div');
         item.className = 'selector-item disabled';
-        
+
         let badge = '';
         if (!isLoggedIn) {
             badge = '<span class="model-badge" style="background: #ffc107; color: #000; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; margin-left: 8px;">Login</span>';
         } else if (userSubscription === 'free') {
             badge = '<span class="model-badge" style="background: #10a37f; color: #fff; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; margin-left: 8px;">Pro</span>';
         }
-        
+
         item.innerHTML = `<i class="fas fa-microchip"></i><span>${model}</span>${badge}`;
         item.onclick = () => selectModel(model);
         list.appendChild(item);
@@ -190,7 +207,7 @@ function canUseModel(model) {
 function selectProvider(provider) {
     currentProvider = provider;
     document.getElementById('providerSelector').style.display = 'none';
-    
+
     if (MODELS[provider] && MODELS[provider].length > 0) {
         selectModel(MODELS[provider][0]);
     }
@@ -229,14 +246,14 @@ function goToSignup() {
 
 async function sendMessage() {
     if (isBotResponding) return;
-    
+
     const input = document.getElementById('messageInput');
     const text = input.textContent.trim();
     if (!text && !uploadedFile) return;
-    
+
     if (isLoggedIn && userSubscription === 'free') {
         currentMessageCount++;
-        
+
         if (currentMessageCount >= 20) {
             showUpgradeModal('limit');
             return;
@@ -244,42 +261,42 @@ async function sendMessage() {
             showUpgradeModal('warning');
         }
     }
-    
+
     if (!firstUserInput && text) {
         firstUserInput = text;
     }
-    
+
     const model = currentModel;
-    
+
     isBotResponding = true;
     disableInput();
-    
+
     hideWelcome();
     addMessage(text || 'Analyze file', 'user');
     input.textContent = '';
-    
+
     if (messages.length === 0 && (userNickname || userSystemPrompt)) {
         let systemContext = '';
         if (userNickname) systemContext += `The user's name is ${userNickname}. Address them by their name when appropriate. `;
         if (userSystemPrompt) systemContext += userSystemPrompt;
         messages.push({ role: 'system', content: systemContext });
     }
-    
+
     messages.push({ role: 'user', content: text });
-    
+
     if (isLoggedIn) await saveMsg('user', text, model);
-    
+
     showThinking();
-    
+
     try {
         const res = await fetch('/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message: text, model })
         });
-        
+
         const data = await res.json();
-        
+
         if (!data.success) {
             hideThinking();
             addMessage(data.message, 'bot');
@@ -287,7 +304,7 @@ async function sendMessage() {
             enableInput();
             return;
         }
-        
+
         let aiRes;
         if (uploadedFile) {
             aiRes = await puter.ai.chat(text || 'What is this?', uploadedFile, { model });
@@ -296,16 +313,16 @@ async function sendMessage() {
         } else {
             aiRes = await puter.ai.chat(messages, { model });
         }
-        
+
         hideThinking();
         const reply = aiRes.message?.content || 'No response';
         messages.push(aiRes.message);
         addMessage(reply, 'bot');
-        
+
         if (isLoggedIn) await saveMsg('assistant', reply, model);
-        
+
         if (messages.length === 2 && isLoggedIn && firstUserInput) generateTitle();
-        
+
         updateCredits();
     } catch (error) {
         hideThinking();
@@ -336,7 +353,7 @@ async function saveMsg(role, content, model) {
 
 async function generateTitle() {
     if (!firstUserInput || firstUserInput.trim().length === 0) return;
-    
+
     const res = await fetch('/api/generate-title', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -351,14 +368,14 @@ async function generateTitle() {
 function addMessage(text, type) {
     const div = document.createElement('div');
     div.className = `message ${type}`;
-    
+
     const avatar = document.createElement('div');
     avatar.className = 'message-avatar';
     avatar.innerHTML = type === 'user' ? '<i class="fas fa-user"></i>' : '<i class="fas fa-comments"></i>';
-    
+
     const content = document.createElement('div');
     content.className = 'message-content';
-    
+
     if (type === 'user') {
         content.textContent = text;
     } else {
@@ -369,7 +386,7 @@ function addMessage(text, type) {
         copyBtn.onclick = () => copyMessage(text, copyBtn);
         div.appendChild(copyBtn);
     }
-    
+
     div.appendChild(avatar);
     div.appendChild(content);
     document.getElementById('messages').appendChild(div);
@@ -426,10 +443,10 @@ function hideWelcome() {
 async function handleFileUpload() {
     const file = document.getElementById('fileInput').files[0];
     if (!file) return;
-    
+
     const form = new FormData();
     form.append('file', file);
-    
+
     try {
         const res = await fetch('/api/upload', { method: 'POST', body: form });
         const data = await res.json();
@@ -469,7 +486,7 @@ function newChat() {
     document.getElementById('filePreview').innerHTML = '';
     document.getElementById('welcomeScreen').style.display = 'flex';
     document.querySelectorAll('.history-item').forEach(el => el.classList.remove('active'));
-    
+
     if (isLoggedIn && (userNickname || userSystemPrompt)) {
         let systemContext = '';
         if (userNickname) systemContext += `The user's name is ${userNickname}. Address them by their name when appropriate. `;
@@ -482,7 +499,7 @@ function showUpgradeModal(type) {
     const modal = new bootstrap.Modal(document.getElementById('upgradeModal'));
     const title = document.getElementById('upgradeModalTitle');
     const body = document.getElementById('upgradeModalBody');
-    
+
     if (type === 'warning') {
         title.textContent = 'Approaching Message Limit';
         body.innerHTML = '<p>You have 5 messages remaining in this chat. Upgrade to Pro for unlimited messages!</p>';
@@ -492,7 +509,7 @@ function showUpgradeModal(type) {
         body.innerHTML = '<p>You\'ve reached the 20 message limit for free users in this chat. Upgrade to Pro or start a new chat!</p>';
         document.getElementById('upgradeModalCancel').style.display = 'none';
     }
-    
+
     modal.show();
 }
 
@@ -509,24 +526,24 @@ async function updateCredits() {
     userSubscription = data.subscription || 'guest';
     userSubscriptionPlan = data.subscription_plan || 'Free Plan';
     userSubscriptionExpiry = data.subscription_expiry;
-    
+
     if (data.welcome_type) {
         setTimeout(() => {
             showWelcomeModal(data.welcome_type, data.username);
         }, 500);
     }
-    
+
     if (isLoggedIn) {
         await loadPersonalization();
     }
-    
+
     updateUI();
 }
 
 function showWelcomeModal(type, username) {
     const title = document.getElementById('welcomeModalTitle');
     const body = document.getElementById('welcomeModalBody');
-    
+
     if (type === 'signup') {
         title.textContent = 'Welcome to ChatForge!';
         body.innerHTML = `
@@ -551,7 +568,7 @@ function showWelcomeModal(type, username) {
             <p>Ready to continue your AI journey?</p>
         `;
     }
-    
+
     const modal = new bootstrap.Modal(document.getElementById('welcomeModal'));
     modal.show();
 }
@@ -559,15 +576,15 @@ function showWelcomeModal(type, username) {
 function updateUI() {
     const footer = document.getElementById('sidebarFooter');
     const menu = document.getElementById('userDropdownMenu');
-    
+
     if (isLoggedIn) {
         footer.classList.remove('hidden');
-        
+
         let planBadge = '';
         if (userSubscription === 'pro') {
             planBadge = '<span style="background: #10a37f; color: #fff; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; margin-left: 8px;">PRO</span>';
         }
-        
+
         menu.innerHTML = `
             <li><span class="dropdown-item-text" style="font-weight: 600;" id="username"></span></li>
             <li><span class="dropdown-item-text" style="font-size: 0.85rem; color: var(--text-2);">${userSubscriptionPlan}${planBadge}</span></li>
@@ -589,14 +606,14 @@ function updateUI() {
 
 async function loadHistory() {
     if (!isLoggedIn) return;
-    
+
     try {
         const res = await fetch('/api/chat-sessions');
         const data = await res.json();
-        
+
         const container = document.getElementById('chatHistory');
         container.innerHTML = '';
-        
+
         if (data.success && data.sessions && data.sessions.length > 0) {
             data.sessions.forEach(s => {
                 const div = document.createElement('div');
@@ -630,23 +647,23 @@ async function loadSession(id) {
     try {
         const res = await fetch(`/api/load-session/${id}`);
         const data = await res.json();
-        
+
         if (data.success) {
             currentSessionId = id;
             messages = [];
             currentMessageCount = data.message_count || 0;
             firstUserInput = null;
-            
+
             if (userNickname || userSystemPrompt) {
                 let systemContext = '';
                 if (userNickname) systemContext += `The user's name is ${userNickname}. Address them by their name when appropriate. `;
                 if (userSystemPrompt) systemContext += userSystemPrompt;
                 messages.push({ role: 'system', content: systemContext });
             }
-            
+
             document.getElementById('messages').innerHTML = '';
             document.getElementById('welcomeScreen').style.display = 'none';
-            
+
             if (data.messages && data.messages.length > 0) {
                 data.messages.forEach(m => {
                     messages.push({ role: m.role, content: m.content });
@@ -655,7 +672,7 @@ async function loadSession(id) {
             } else {
                 document.getElementById('welcomeScreen').style.display = 'flex';
             }
-            
+
             loadHistory();
             scrollToBottom();
         } else {
@@ -670,14 +687,14 @@ async function loadSession(id) {
 function addMessageInstant(text, type) {
     const div = document.createElement('div');
     div.className = `message ${type}`;
-    
+
     const avatar = document.createElement('div');
     avatar.className = 'message-avatar';
     avatar.innerHTML = type === 'user' ? '<i class="fas fa-user"></i>' : '<i class="fas fa-comments"></i>';
-    
+
     const content = document.createElement('div');
     content.className = 'message-content';
-    
+
     if (type === 'user') {
         content.textContent = text;
     } else {
@@ -688,7 +705,7 @@ function addMessageInstant(text, type) {
         copyBtn.onclick = () => copyMessage(text, copyBtn);
         div.appendChild(copyBtn);
     }
-    
+
     div.appendChild(avatar);
     div.appendChild(content);
     document.getElementById('messages').appendChild(div);
@@ -707,14 +724,14 @@ async function saveTitle() {
         alert('Title cannot be empty');
         return;
     }
-    
+
     try {
         const res = await fetch('/api/update-title', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ session_id: editingSessionId, title })
         });
-        
+
         const data = await res.json();
         if (data.success) {
             bootstrap.Modal.getInstance(document.getElementById('editTitleModal')).hide();
@@ -730,14 +747,14 @@ async function saveTitle() {
 
 async function deleteChat(id) {
     if (!confirm('Delete this chat? This action cannot be undone.')) return;
-    
+
     try {
         const res = await fetch('/api/delete-session', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ session_id: id })
         });
-        
+
         const data = await res.json();
         if (data.success) {
             if (id === currentSessionId) {
@@ -780,7 +797,7 @@ function showTab(tab) {
 async function loadPersonalization() {
     const res = await fetch('/api/personalization');
     const data = await res.json();
-    
+
     if (data.success) {
         userNickname = data.nickname || '';
         userSystemPrompt = data.system_prompt || '';
@@ -792,7 +809,7 @@ async function loadPersonalization() {
 async function savePersonalization() {
     const nickname = document.getElementById('nicknameInput').value.trim();
     const systemPrompt = document.getElementById('systemPromptInput').value.trim();
-    
+
     try {
         const res = await fetch('/api/personalization', {
             method: 'POST',
@@ -803,7 +820,7 @@ async function savePersonalization() {
                 optimized_prompt: ''
             })
         });
-        
+
         const data = await res.json();
         if (data.success) {
             userNickname = nickname;
@@ -821,18 +838,18 @@ async function savePersonalization() {
 async function optimizePrompt() {
     const nickname = document.getElementById('nicknameInput').value.trim();
     const prompt = document.getElementById('systemPromptInput').value.trim();
-    
+
     if (!nickname && !prompt) {
         alert('Enter nickname or prompt');
         return;
     }
-    
+
     const res = await fetch('/api/optimize-prompt', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nickname, system_prompt: prompt })
     });
-    
+
     const data = await res.json();
     if (data.success) {
         document.getElementById('optimizedText').textContent = data.optimized_prompt;
@@ -842,7 +859,7 @@ async function optimizePrompt() {
 
 async function useOptimized() {
     const optimized = document.getElementById('optimizedText').textContent;
-    
+
     await fetch('/api/personalization', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -852,7 +869,7 @@ async function useOptimized() {
             optimized_prompt: optimized
         })
     });
-    
+
     bootstrap.Modal.getInstance(document.getElementById('optimizedModal')).hide();
     alert('Saved!');
 }
@@ -865,7 +882,7 @@ function copyOptimized() {
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     const toggle = sidebar.querySelector('.btn-toggle i');
-    
+
     if (window.innerWidth <= 768) {
         sidebar.classList.toggle('show');
     } else {
@@ -923,15 +940,15 @@ document.getElementById('themeToggle').innerHTML = `<i class="fas fa-${theme ===
 
 if (sessionStorage.getItem('justUpgraded') === 'true') {
     const newCredits = sessionStorage.getItem('newCredits');
-    
+
     if (newCredits) {
         document.getElementById('creditsCount').textContent = newCredits;
     }
-    
+
     sessionStorage.removeItem('justUpgraded');
     sessionStorage.removeItem('newCredits');
     sessionStorage.removeItem('newPlan');
-    
+
     setTimeout(() => {
         confetti({
             particleCount: 100,
@@ -961,11 +978,11 @@ function showPaymentModal() {
 function selectPlan(plan, price, element) {
     selectedPlan = plan;
     selectedPlanPrice = price;
-    
+
     if (plan === 'monthly') selectedPlanDays = 30;
     else if (plan === 'quarterly') selectedPlanDays = 90;
     else if (plan === 'yearly') selectedPlanDays = 365;
-    
+
     document.querySelectorAll('.plan-card').forEach(el => el.style.borderColor = 'var(--border)');
     element.style.borderColor = 'var(--accent)';
     document.getElementById('payAmount').textContent = '$' + price;
@@ -975,11 +992,11 @@ function selectPaymentMethod(method, element) {
     selectedPaymentMethod = method;
     document.querySelectorAll('.payment-method-btn').forEach(el => el.classList.remove('active'));
     element.classList.add('active');
-    
+
     document.getElementById('cardPayment').style.display = 'none';
     document.getElementById('paypalPayment').style.display = 'none';
     document.getElementById('cryptoPayment').style.display = 'none';
-    
+
     if (method === 'card') document.getElementById('cardPayment').style.display = 'block';
     else if (method === 'paypal') document.getElementById('paypalPayment').style.display = 'block';
     else if (method === 'crypto') document.getElementById('cryptoPayment').style.display = 'block';
@@ -987,13 +1004,13 @@ function selectPaymentMethod(method, element) {
 
 function processPayment() {
     let paymentData = {};
-    
+
     if (selectedPaymentMethod === 'card') {
         const cardNumber = document.getElementById('cardNumber').value;
         const cardName = document.getElementById('cardName').value;
         const cardExpiry = document.getElementById('cardExpiry').value;
         const cardCvv = document.getElementById('cardCvv').value;
-        
+
         if (!cardNumber || !cardName || !cardExpiry || !cardCvv) {
             alert('Please fill in all card details');
             return;
@@ -1015,12 +1032,12 @@ function processPayment() {
         }
         paymentData = { cryptoWallet, cryptoType };
     }
-    
+
     document.getElementById('paymentCloseBtn').disabled = true;
     const btn = document.getElementById('payBtn');
     btn.disabled = true;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-    
+
     setTimeout(() => {
         bootstrap.Modal.getInstance(document.getElementById('paymentModal')).hide();
         showProcessingModal();
@@ -1030,7 +1047,7 @@ function processPayment() {
 function showProcessingModal() {
     const modal = new bootstrap.Modal(document.getElementById('processingModal'));
     modal.show();
-    
+
     const progressBar = document.getElementById('progressBar');
     let progress = 0;
     const interval = setInterval(() => {
@@ -1050,18 +1067,18 @@ function showPaymentSuccess() {
     const expiryDate = new Date();
     expiryDate.setDate(expiryDate.getDate() + selectedPlanDays);
     const formattedDate = expiryDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-    
+
     document.getElementById('expiryDate').textContent = formattedDate;
-    
+
     const modal = new bootstrap.Modal(document.getElementById('successModal'));
     modal.show();
-    
+
     confetti({
         particleCount: 100,
         spread: 70,
         origin: { y: 0.6 }
     });
-    
+
     setTimeout(async () => {
         await fetch('/api/upgrade-pro', {
             method: 'POST',
